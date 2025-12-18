@@ -27,7 +27,7 @@ const AddPlant = ({ showToast }) => {
                 },
             };
 
-            await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/plants', formData, config);
+            await axios.post('http://localhost:5000/api/plants', formData, config);
             showToast('Plant added to your garden!', 'success');
             navigate('/');
         } catch (err) {

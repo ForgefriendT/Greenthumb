@@ -18,7 +18,7 @@ const Register = () => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
-            await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/auth/register', formData);
+            await axios.post('http://localhost:5000/api/auth/register', formData);
             alert('Registration Successful! Please Login.'); // Simple alert for student project
             navigate('/login');
         } catch (err) {

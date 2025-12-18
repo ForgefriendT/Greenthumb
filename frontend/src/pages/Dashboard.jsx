@@ -19,7 +19,7 @@ const Dashboard = ({ showToast }) => {
                 const config = {
                     headers: { 'x-auth-token': token },
                 };
-                const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/plants', config);
+                const res = await axios.get('http://localhost:5000/api/plants', config);
                 setPlants(res.data);
             } catch (err) {
                 console.error(err);
@@ -50,7 +50,7 @@ const Dashboard = ({ showToast }) => {
             setPlants(updatedPlants);
             showToast('Plant watered successfully!', 'success'); // Toast
 
-            await axios.put((import.meta.env.VITE_API_URL || 'http://localhost:5000') + `/api/plants/${id}/water`, {}, {
+            await axios.put(`http://localhost:5000/api/plants/${id}/water`, {}, {
                 headers: { 'x-auth-token': token }
             });
         } catch (err) {
@@ -68,7 +68,7 @@ const Dashboard = ({ showToast }) => {
             setPlants(plants.filter(p => p._id !== id));
             showToast('Plant removed from garden', 'success');
 
-            await axios.delete((import.meta.env.VITE_API_URL || 'http://localhost:5000') + `/api/plants/${id}`, {
+            await axios.delete(`http://localhost:5000/api/plants/${id}`, {
                 headers: { 'x-auth-token': token }
             });
         } catch (err) {

@@ -18,7 +18,7 @@ const Forum = ({ showToast }) => {
             }
             try {
                 const config = { headers: { 'x-auth-token': token } };
-                const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/posts', config);
+                const res = await axios.get('http://localhost:5000/api/posts', config);
                 setPosts(res.data);
             } catch (err) {
                 console.error(err);
@@ -32,7 +32,7 @@ const Forum = ({ showToast }) => {
         try {
             const token = localStorage.getItem('token');
             const config = { headers: { 'x-auth-token': token } };
-            const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api/posts', newPost, config);
+            const res = await axios.post('http://localhost:5000/api/posts', newPost, config);
             setPosts([res.data, ...posts]);
             setNewPost({ title: '', description: '', image: '' });
             showToast('Post created!', 'success');
@@ -50,7 +50,7 @@ const Forum = ({ showToast }) => {
             const text = commentText[postId];
             if (!text) return;
 
-            const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:5000') + `/api/posts/comment/${postId}`, { text }, config);
+            const res = await axios.post(`http://localhost:5000/api/posts/comment/${postId}`, { text }, config);
 
             const updatedPosts = posts.map(post => {
                 if (post._id === postId) {
