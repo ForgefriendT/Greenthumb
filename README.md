@@ -57,7 +57,7 @@ A full-stack MERN application that helps plant enthusiasts track their plants, m
    
    Create a `.env` file in the `backend` directory:
    ```env
-   MONGO_URI=your_mongodb_connection_string
+   MONGO_URI=mongodb://127.0.0.1:27017/greenthumb
    JWT_SECRET=your_jwt_secret_key
    PORT=5000
    ```
